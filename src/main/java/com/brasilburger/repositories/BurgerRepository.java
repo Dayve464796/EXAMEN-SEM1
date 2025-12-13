@@ -11,7 +11,7 @@ import com.brasilburger.entities.Burger;
 
 public class BurgerRepository {
 
-    // ➕ Ajouter un burger
+    //  Ajouter un burger
     public void addBurger(Burger burger) {
         String sql = "INSERT INTO burger (nom, prix, image, actif) VALUES (?, ?, ?, ?)";
 
@@ -31,7 +31,7 @@ public class BurgerRepository {
         }
     }
 
-    // 📄 Lister tous les burgers actifs
+    //  Lister tous les burgers actifs
     public List<Burger> findAll() {
         List<Burger> burgers = new ArrayList<>();
         String sql = "SELECT * FROM burger WHERE actif = true";
@@ -58,7 +58,7 @@ public class BurgerRepository {
         return burgers;
     }
 
-    // 🗄️ Archiver un burger
+    //  Archiver un burger
     public void archiveBurger(int id) {
         String sql = "UPDATE burger SET actif = false WHERE id = ?";
 
