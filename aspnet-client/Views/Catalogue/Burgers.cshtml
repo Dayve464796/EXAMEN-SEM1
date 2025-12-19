@@ -1,0 +1,45 @@
+@model IEnumerable<aspnet_client.Models.Burger>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-5">🍔 Nos Burgers Signature</h2>
+
+    <div class="row">
+        @foreach (var burger in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    
+                    @if (!string.IsNullOrEmpty(burger.Image))
+                    {
+                        <img src="@burger.Image" class="card-img-top" alt="Burger">
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/400x250?text=Brasil+Burger"
+                             class="card-img-top" alt="Burger">
+                    }
+
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@burger.Nom</h5>
+
+                        <p class="price">@burger.Prix FCFA</p>
+
+                        <div class="d-flex justify-content-center gap-2">
+                            <!-- Détails -->
+                            <a href="/Catalogue/BurgerDetails/@burger.Id"
+                               class="btn btn-outline-secondary">
+                                Détails
+                            </a>
+
+                            <!-- Commander -->
+                            <a href="/Commande/AjouterBurger/@burger.Id"
+                               class="btn btn-brasil">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,20 @@
+@model aspnet_client.Models.Menu
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2>@Model.Nom</h2>
+
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <img src="@Model.Image" class="img-fluid mb-3" />
+        }
+
+        <span class="badge badge-custom">Menu Complet</span>
+
+        <div class="mt-3">
+            <a href="/Commande/AjouterMenu/@Model.Id" class="btn btn-brasil">
+                Commander
+            </a>
+        </div>
+    </div>
+</div>

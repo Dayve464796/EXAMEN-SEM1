@@ -1,0 +1,30 @@
+@model IEnumerable<aspnet_client.Models.Menu>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-5">🍟 Nos Menus Complets</h2>
+
+    <div class="row">
+        @foreach (var menu in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    @if (!string.IsNullOrEmpty(menu.Image))
+                    {
+                        <img src="@menu.Image" class="card-img-top" alt="Menu">
+                    }
+
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@menu.Nom</h5>
+                        <span class="badge badge-custom">Menu Complet</span>
+
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-brasil">
+                                Voir détails
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

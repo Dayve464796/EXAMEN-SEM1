@@ -1,0 +1,79 @@
+/* ======  BRASIL BURGER ====== */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(90deg, #0f9d58, #1c1c1c);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #f4c430 !important;
+    font-size: 1.3rem;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #f4c430 !important;
+}
+
+/* Titles */
+h2 {
+    color: #0f9d58;
+    font-weight: bold;
+}
+
+/* Cards */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.card-title {
+    color: #1c1c1c;
+    font-weight: bold;
+}
+
+/* Price */
+.price {
+    font-size: 1.2rem;
+    color: #0f9d58;
+    font-weight: bold;
+}
+
+/* Badge */
+.badge-custom {
+    background-color: #f4c430;
+    color: #1c1c1c;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 20px;
+}
+
+/* Buttons */
+.btn-brasil {
+    background-color: #0f9d58;
+    color: white;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-weight: bold;
+}
+
+.btn-brasil:hover {
+    background-color: #0c7c45;
+    color: #f4c430;
+}

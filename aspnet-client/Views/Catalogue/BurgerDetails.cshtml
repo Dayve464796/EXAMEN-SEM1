@@ -1,0 +1,18 @@
+@model aspnet_client.Models.Burger
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2>@Model.Nom</h2>
+
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <img src="@Model.Image" class="img-fluid mb-3" />
+        }
+
+        <p class="price">@Model.Prix FCFA</p>
+
+        <a href="/Commande/AjouterBurger/@Model.Id" class="btn btn-brasil">
+            Commander
+        </a>
+    </div>
+</div>
