@@ -37,7 +37,12 @@ namespace aspnet_client.Controllers
         // ======================
         public IActionResult Menus()
         {
-            var menus = _context.Menus.ToList();
+           var menus = _context.Menus
+            .Include(m => m.MenuBurgers)
+                .ThenInclude(mb => mb.Burger)
+            .Include(m => m.MenuComplements)
+                .ThenInclude(mc => mc.Complement)
+            .ToList();
             return View(menus);
         }
 
@@ -50,5 +55,17 @@ namespace aspnet_client.Controllers
 
             return View(menu);
         }
+    
+
+    public IActionResult Index(string type)
+{
+    if (type == "burger")
+        return RedirectToAction("Burgers");
+
+    if (type == "menu")
+        return RedirectToAction("Menus");
+
+    return View();
+}
     }
 }

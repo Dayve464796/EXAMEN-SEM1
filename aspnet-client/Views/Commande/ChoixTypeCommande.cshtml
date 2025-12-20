@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <h2>Type de commande</h2>
+
+    <form method="post" action="/Commande/ValiderTypeCommande">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" value="Sur place" required>
+            <label class="form-check-label">Sur place</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" value="À récupérer">
+            <label class="form-check-label">À récupérer</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="type" value="Livraison">
+            <label class="form-check-label">Livraison</label>
+        </div>
+
+        <button class="btn btn-brasil mt-3">Continuer</button>
+    </form>
+</div>

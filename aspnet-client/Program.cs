@@ -9,12 +9,21 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// Add services to the container.
+// 🔹 AJOUT OBLIGATOIRE POUR LE PANIER (SESSION)
+builder.Services.AddSession();
+
+// MVC
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// 🔹 OBLIGATOIRE POUR CSS / JS / IMAGES
+app.UseStaticFiles();
+
+// 🔹 OBLIGATOIRE POUR LA SESSION
+app.UseSession();
+
+// Pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -26,11 +35,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

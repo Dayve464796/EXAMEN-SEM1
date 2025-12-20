@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace aspnet_client.Models;
 
@@ -18,4 +19,30 @@ public partial class Menu
     public virtual ICollection<MenuBurger> MenuBurgers { get; set; } = new List<MenuBurger>();
 
     public virtual ICollection<MenuComplement> MenuComplements { get; set; } = new List<MenuComplement>();
+
+    public decimal PrixTotal
+{
+    get
+    {
+        decimal total = 0;
+
+        if (MenuBurgers != null)
+        {
+            total += MenuBurgers.Sum(mb => mb.Burger?.Prix ?? 0);
+        }
+
+        if (MenuComplements != null)
+        {
+            total += MenuComplements.Sum(mc => mc.Complement?.Prix ?? 0);
+        }
+
+        return total;
+    }
 }
+
+
+
+    
+}
+
+    

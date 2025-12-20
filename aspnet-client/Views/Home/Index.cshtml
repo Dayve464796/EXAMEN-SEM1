@@ -1,8 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model aspnet_client.Models.Commande
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <h2>🛒 Votre commande</h2>
+
+    @if (Model == null)
+    {
+        <p>Aucune commande en cours.</p>
+    }
+    else
+    {
+        <p><strong>État :</strong> @Model.Etat</p>
+        <p><strong>Type :</strong> @Model.TypeCommande</p>
+
+        <form method="post" asp-action="ChoisirType">
+            <select name="typeCommande" class="form-select w-50">
+                <option>Sur place</option>
+                <option>À emporter</option>
+                <option>Livraison</option>
+            </select>
+            <button class="btn btn-brasil mt-3">Valider le type</button>
+        </form>
+    }
+</div>
+
+<div class="container mt-5 text-center">
+    <h2>🛒 Votre panier</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success mt-3">
+            @TempData["Message"]
+        </div>
+    }
+
+    <p class="mt-4">
+        La gestion complète du panier sera implémentée dans la suite.
+    </p>
 </div>

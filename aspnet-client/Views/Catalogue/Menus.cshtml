@@ -7,19 +7,36 @@
         @foreach (var menu in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 shadow-sm">
+
                     @if (!string.IsNullOrEmpty(menu.Image))
                     {
                         <img src="@menu.Image" class="card-img-top" alt="Menu">
                     }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/400x250?text=Menu+Brasil"
+                             class="card-img-top" alt="Menu">
+                    }
 
                     <div class="card-body text-center">
                         <h5 class="card-title">@menu.Nom</h5>
-                        <span class="badge badge-custom">Menu Complet</span>
 
-                        <div class="mt-3">
-                            <a href="#" class="btn btn-brasil">
-                                Voir détails
+                        <span class="badge badge-custom mb-3 d-inline-block">
+                            Menu Complet
+                        </span>
+
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <!-- Détails -->
+                            <a href="/Catalogue/MenuDetails/@menu.Id"
+                               class="btn btn-outline-secondary">
+                                Détails
+                            </a>
+
+                            <!-- Commander -->
+                            <a href="/Commande/AjouterMenu/@menu.Id"
+                               class="btn btn-brasil">
+                                Commander
                             </a>
                         </div>
                     </div>
