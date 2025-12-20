@@ -3,13 +3,17 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔹 Connexion PostgreSQL (Neon)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// 🔹 AJOUT OBLIGATOIRE POUR LE PANIER (SESSION)
+
 builder.Services.AddSession();
 
 // MVC
@@ -17,7 +21,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// 🔹 OBLIGATOIRE POUR CSS / JS / IMAGES
+
 app.UseStaticFiles();
 
 // 🔹 OBLIGATOIRE POUR LA SESSION
@@ -30,7 +34,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
